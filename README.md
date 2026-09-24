@@ -50,18 +50,23 @@ Sesion 3
 ### Servomotor
  - Se encarga de mover el sensor para poder escanear
 ![servo](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8L92WRtuM4yBB8L9KO2aEwdfVP6WDwd1EyHqTFG1xntXDv4ejt9iPkw4_&s=10)
+![servo2](https://raw.githubusercontent.com/Mejolov24/SuperTorretaDeCrimenDeGuerra/refs/heads/main/Captura.PNG?token=GHSAT0AAAAAAEKEFN66SVY4DRELYWS32WWI2VVQB5Q)
 
 
 ### Ultrasonico
 ![ultrasonico](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjBwoKL8ATUpG2y01a4sJfxq2E2OYQXTk3jmpWmQOMzShC9ZfGQ5sHD0QK&s=10)
 Es la estrella del show, se encarga de detectar a los intrusos mediante ondad inaudibles por el ser humano
+![ultra2](https://raw.githubusercontent.com/Mejolov24/SuperTorretaDeCrimenDeGuerra/refs/heads/main/Captura2.PNG?token=GHSAT0AAAAAAEKEFN66FDENXARW4S4WYIAM2VVQCMA)
 
 ### Laser
 ![laser](https://especificar.cl/wp-content/uploads/2026/07/modulo-laser-ky-008-650nm-arduino-imagen-principal.webp)
+![laser2](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7RJXZcGVgW18C0VyWUBeYtW0ELo6DgwR3Q7C8rRi6Ib4j7MoRtNmdZQSU&s=10)
 Este es necesario para calibrar la posicion al instalar la torreta y ver su rango efectivo, es recomendable apagarlo en el uso activo.
 
 ### Buzzer
 ![buzzer](https://cdn3.botland.store/70229-pdt_540/active-buzzer-module-with-generator-black-iduino-st1143.jpg)
 Alerta a los inclusos con pitidos.
+1 cm diametro
 
-
+### Breadboad
+![bvrd](https://www.spysite.com/cdn/shop/files/solderless-electronic-breadboard-830-tie-points-stm101877-spysitecom-7712219.png?v=1762259673)
