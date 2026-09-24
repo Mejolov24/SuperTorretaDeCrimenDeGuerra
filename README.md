@@ -49,7 +49,8 @@ Sesion 3
 ## Materiales
 ### Servomotor
  - Se encarga de mover el sensor para poder escanear
-![servo](https://mcielectronics.cl/wp-content/uploads/2023/11/D_NQ_NP_2X_798793-MLC51508479648_092022-F.webp)
+![servo](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8L92WRtuM4yBB8L9KO2aEwdfVP6WDwd1EyHqTFG1xntXDv4ejt9iPkw4_&s=10)
+
 
 ### Ultrasonico
 ![ultrasonico](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjBwoKL8ATUpG2y01a4sJfxq2E2OYQXTk3jmpWmQOMzShC9ZfGQ5sHD0QK&s=10)
