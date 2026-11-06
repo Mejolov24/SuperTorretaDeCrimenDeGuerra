@@ -1,0 +1,101 @@
+#include <Arduino.h>
+#include <Servo.h>
+#include <Wire.h> 
+#include <LiquidCrystal_I2C.h>
+#include <Ultrasonic.h>
+
+#define SERVO_PIN 10
+#define BUZZER_PIN 8
+#define ULTRASONIC_TRIGGER 11
+#define ULTRASONIC_ECHO 10
+#define MIN_DISTANCE 128
+#define LED_PIN_R 6
+#define LED_PIN_G 5
+#define LED_PIN_B 3
+
+Servo servo;
+Ultrasonic ultrasonic(ULTRASONIC_ECHO,ULTRASONIC_TRIGGER);
+uint8_t servo_pos = 0;
+#include <LiquidCrystal_I2C.h>
+
+LiquidCrystal_I2C lcd(0x27,20,4);
+
+enum ESTADO_TORRETA_t {
+  REPOSO,
+  RAPIDO,
+  DISPARO
+};
+
+enum COLOR_LED_t {
+  Rojo,
+  Verde,
+  Azul,
+  Amarillo
+};
+
+ESTADO_TORRETA_t estado_torreta = REPOSO;
+COLOR_LED_t estado_led = Verde;
+int8_t scala = 1;
+
+void mover_servo(uint8_t increment){
+  servo_pos += (increment * scala);
+  if (servo_pos >= 180){scala = -1;}
+  if(servo_pos == 0){scala = 1;}
+}
+
+void establecer_led(uint8_t rojo, uint8_t verde, uint8_t azul){
+
+  analogWrite(LED_PIN_R,rojo);
+  analogWrite(LED_PIN_G,verde);
+  analogWrite(LED_PIN_B,azul);
+}
+
+void torreta_tick(){
+  lcd.clear();
+  switch (estado_torreta)
+  {
+  case REPOSO:
+    mover_servo(1);
+    establecer_led(0,255,0);
+    lcd.print("Buscando...");
+    break;
+  case RAPIDO:
+    mover_servo(3);
+    tone(BUZZER_PIN,500,100);
+    establecer_led(200,255,0);
+    lcd.print("ALERTA...");
+    break;
+  case DISPARO:
+    tone(BUZZER_PIN,1000,50);
+    establecer_led(255,0,0);
+    lcd.print("Disparo!");
+    break;
+  
+  default:
+    break;
+  }
+}
+
+
+
+void setup() {
+  Serial.begin(9600);           // set up Serial library at 9600 bps
+  servo.attach(SERVO_PIN);
+  lcd.init();                      // initialize the lcd 
+  lcd.backlight();
+  tone(BUZZER_PIN,500,1000);
+}
+
+bool rango(int valor, int minimo, int maximo){
+  return (valor < maximo and valor > minimo);
+}
+
+void loop(){
+uint16_t distancia = ultrasonic.read();
+if(rango(distancia,51,100)){estado_torreta = REPOSO;}
+if(rango(distancia,16,50)){estado_torreta = RAPIDO;}
+if(rango(distancia,0,15)){estado_torreta = DISPARO;}
+torreta_tick();
+Serial.println(distancia);
+  servo.write(servo_pos);
+}
